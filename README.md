@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Product Admin Dashboard
 
-## Getting Started
+A responsive Product Admin Dashboard built with **Next.js, React, Tailwind CSS, Axios, and DummyJSON API**.
 
-First, run the development server:
+The dashboard allows authenticated users to manage products with search, category filtering, sorting, pagination, CRUD operations, and detailed product views.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Features
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### Authentication
+- Login using DummyJSON authentication API
+- Protected product dashboard
+- Logout functionality
+- Authentication token stored locally
+- Axios automatically attaches the authentication token to API requests
+- Login error handling
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Product Management
+- View products in a responsive dashboard
+- Desktop table layout
+- Mobile card layout
+- Product image, title, category, price, rating, and stock
+- View detailed product information
+- Product reviews
+- Product not-found handling
 
-## Learn More
+### Search & Filtering
+- Debounced product search
+- Category filtering
+- Search and category filtering can be used together
+- Sorting by:
+  - Title
+  - Price
+  - Rating
+- Ascending and descending sorting
+- Search/filter/sort state stored in the URL
 
-To learn more about Next.js, take a look at the following resources:
+### Pagination
+- API-based pagination using `limit` and `skip`
+- Page navigation
+- Previous / Next buttons
+- Page size options:
+  - 10
+  - 20
+  - 50
+- Current result count displayed
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### CRUD Operations
+- Add product
+- Edit product
+- Delete product
+- Delete confirmation modal
+- Form validation
+- Loading states during mutations
+- Success and error messages
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Responsive Design
+- Desktop product table
+- Mobile product cards
+- Responsive search and filter controls
+- Responsive product details page
 
-## Deploy on Vercel
+### Error & Loading Handling
+- Loading states
+- Empty states
+- API error messages
+- Retry option
+- Invalid product ID handling
+- Invalid pagination values handled safely
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🛠️ Tech Stack
+
+- **Next.js**
+- **React**
+- **JavaScript**
+- **Tailwind CSS**
+- **Axios**
+- **DummyJSON API**
+- **LocalStorage**
+- **Next.js App Router**
+
+---
+
+## 📁 Project Structure
+
+```text
+product-admin-dashboard/
+│
+├── public/
+│   └── placeholder-product.png
+│
+├── src/
+│   ├── app/
+│   │   ├── login/
+│   │   │   └── page.js
+│   │   │
+│   │   ├── products/
+│   │   │   ├── page.js
+│   │   │   └── [id]/
+│   │   │       └── page.js
+│   │   │
+│   │   ├── globals.css
+│   │   ├── layout.js
+│   │   └── page.js
+│   │
+│   ├── components/
+│   │   ├── Navbar.js
+│   │   ├── ProtectedRoute.js
+│   │   ├── ProductTable.js
+│   │   ├── ProductCard.js
+│   │   ├── Pagination.js
+│   │   ├── SearchBar.js
+│   │   ├── FilterSort.js
+│   │   ├── ProductFormModal.js
+│   │   └── ConfirmModal.js
+│   │
+│   ├── hooks/
+│   │   └── useDebounce.js
+│   │
+│   ├── lib/
+│   │   └── axios.js
+│   │
+│   └── services/
+│       ├── authService.js
+│       └── productService.js
+│
+├── package.json
+└── README.md
