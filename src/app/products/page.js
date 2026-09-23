@@ -304,23 +304,23 @@ export default function ProductsPage() {
    * DEBOUNCED SEARCH
    */
 
-  useEffect(() => {
-    if (
-      debouncedSearch.trim() ===
-      urlSearch.trim()
-    ) {
-      return;
-    }
+useEffect(() => {
+  if (
+    debouncedSearch.trim() ===
+    urlSearch.trim()
+  ) {
+    return;
+  }
 
-    updateUrl({
-      page: 1,
-      limit: pageSize,
-      search: debouncedSearch,
-      category: "",
-      sort: sortBy,
-      order: sortOrder,
-    });
-  }, [debouncedSearch]);
+  updateUrl({
+    page: 1,
+    limit: pageSize,
+    search: debouncedSearch,
+    category: selectedCategory,
+    sort: sortBy,
+    order: sortOrder,
+  });
+}, [debouncedSearch]);
 
   /*
    * LOAD CATEGORIES
@@ -1139,20 +1139,16 @@ export default function ProductsPage() {
    * CATEGORY CHANGE
    */
 
-  const handleCategoryChange = (
-    category
-  ) => {
-    setSearchInput("");
-
+    const handleCategoryChange = (category) => {
     updateUrl({
-      page: 1,
-      limit: pageSize,
-      search: "",
-      category,
-      sort: sortBy,
-      order: sortOrder,
+        page: 1,
+        limit: pageSize,
+        search: urlSearch,
+        category,
+        sort: sortBy,
+        order: sortOrder,
     });
-  };
+    };
 
   /*
    * SORT CHANGE
