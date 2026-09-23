@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import ProtectedRoute from "../../components/ProtectedRoute";
@@ -29,7 +29,7 @@ const VALID_PAGE_SIZES = [10, 20, 50];
 
 const LOCAL_PRODUCTS_KEY = "admin_local_products";
 
-export default function ProductsPage() {
+function ProductsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -1516,6 +1516,22 @@ useEffect(() => {
           }
         />
       </div>
+      
     </ProtectedRoute>
+    
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex min-h-screen items-center justify-center bg-gray-100">
+          <p className="text-gray-600">Loading products...</p>
+        </div>
+      }
+    >
+      <ProductsContent />
+    </Suspense>
   );
 }
